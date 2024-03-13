@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+  <div *ngIf="!isAdmin; else elseBlock">
+    <a [routerLink]="'web/client'" class="home">My sales food</a>
+  </div>
+  <ng-template #elseBlock>
+    <button (click)="goWeb()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-template>
+
+  <span class="example-spacer"></span>
+
+  <!-- logged -->
+  <div
+    *ngIf="!(authService.user | async)"
+    class="flex align-items-center gap-1"
+  >
+    <div
+      *ngIf="!(authService.user | async) && !isAdmin"
+      class="flex align-items-center gap-1"
+    >
+      <div class="flex align-items-center">
+        <mat-icon><span> monetization_on </span></mat-icon>
+        <span>{{ totalPrice }}</span>
+      </div>
+      <button mat-icon-button [routerLink]="'web/cart'">
+        <mat-icon
+          [matBadge]="totalFood < 1 ? '' : totalFood"
+          matBadgeColor="warn"
+          ><span class=""> shopping_cart </span></mat-icon
+        >
+      </button>
+    </div>
+  </div>
+
+  <!-- log out -->
+  <div
+    *ngIf="authService.user | async; else elseBlock1"
+    class="flex align-items-center gap-1"
+  >
+    <button mat-icon-button (click)="authService.logout()">
+      <mat-icon>
+        <span class=""> logout </span>
+      </mat-icon>
+    </button>
+  </div>
+
+  <!-- log in -->
+  <ng-template #elseBlock1>
+    <button mat-icon-button [routerLink]="'admin/auth'">
+      <mat-icon>
+        <span class=""> login </span>
+      </mat-icon>
+    </button>
+  </ng-template>
+</mat-toolbar>

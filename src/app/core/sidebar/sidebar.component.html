@@ -1,0 +1,11 @@
+<mat-list role="list" class="sidebar-container">
+  <li *ngFor="let item of menu">
+    <a
+      [routerLink]="[item.route]"
+      routerLinkActive="active"
+      class="sidebar-item"
+    >
+      <span> {{ item.label }} </span></a
+    >
+  </li>
+</mat-list>

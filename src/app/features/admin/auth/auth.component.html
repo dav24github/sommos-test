@@ -1,0 +1,43 @@
+<div *ngIf="isLoading" style="text-align: center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<form [formGroup]="signInForm" (ngSubmit)="login()" class="form-widget">
+  <div class="container flex flex-column gap-2">
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="Email -> tu correo"
+      />
+      <mat-icon matSuffix color="primary"
+        ><span class=""> mail </span></mat-icon
+      >
+      <mat-error *ngIf="signInForm.get('email').hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="signInForm.get('email').hasError('email')">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        id="password"
+        type="password"
+        placeholder="Password -> 123456"
+        formControlName="password"
+      />
+      <mat-icon matSuffix color="primary"
+        ><span class=""> password </span></mat-icon
+      >
+      <mat-error *ngIf="signInForm.get('password').hasError('required')">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Login</button>
+  </div>
+</form>

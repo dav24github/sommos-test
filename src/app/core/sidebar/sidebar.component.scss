@@ -1,0 +1,28 @@
+@use "../../../styles.scss" as style;
+@use "@angular/material" as mat;
+
+.sidebar-container {
+  width: 350px;
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background: mat.get-color-from-palette(style.$grey-palette, 50);
+    transition: 0.3s all;
+    font-size: 16px;
+
+    &:hover {
+      background: mat.get-color-from-palette(style.$grey-palette, 200);
+    }
+
+    &.active {
+      background: mat.get-color-from-palette(style.$grey-palette, 300);
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+  }
+}

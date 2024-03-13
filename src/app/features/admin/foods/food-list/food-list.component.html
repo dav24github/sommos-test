@@ -1,0 +1,45 @@
+<div class="flex flex-column gap-0">
+  <div class="flex gap-2">
+    <h2>List of food</h2>
+    <div class="example-button-container">
+      <button mat-mini-fab color="primary" (click)="openDialog()">
+        <mat-icon
+          ><span class="material-symbols-outlined"> add </span></mat-icon
+        >
+      </button>
+    </div>
+  </div>
+  <div class="flex flex-column gap-1">
+    <app-food-item
+      [admin]="true"
+      *ngFor="let item of foods"
+      [title]="item.name!"
+    >
+      <ng-container detail>
+        <span class="price">${{ item.price }}</span>
+      </ng-container>
+      <ng-container buttons>
+        <button mat-icon-button (click)="openDialog(item)">
+          <mat-icon color="primary"><span> edit </span></mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteFood(item)">
+          <mat-icon color="warn"><span> delete </span></mat-icon>
+        </button>
+        <button
+          *ngIf="!item.visible"
+          mat-icon-button
+          (click)="editFoodVisibility(item, true)"
+        >
+          <mat-icon><span> visibility_off </span></mat-icon>
+        </button>
+        <button
+          *ngIf="item.visible"
+          mat-icon-button
+          (click)="editFoodVisibility(item, false)"
+        >
+          <mat-icon><span> visibility </span></mat-icon>
+        </button>
+      </ng-container>
+    </app-food-item>
+  </div>
+</div>

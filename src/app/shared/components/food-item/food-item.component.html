@@ -1,0 +1,15 @@
+<div
+  [class]="
+    admin ? 'card flex justify-content-space' : 'card flex flex-column gap-1'
+  "
+>
+  <div class="header flex flex-column gap-0">
+    <h3 class="title">
+      <strong>{{ title }}</strong>
+    </h3>
+    <ng-content select="[detail]"></ng-content>
+  </div>
+  <div class="flex align-items-center gap-1">
+    <ng-content select="[buttons]"></ng-content>
+  </div>
+</div>

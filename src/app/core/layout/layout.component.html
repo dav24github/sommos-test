@@ -1,0 +1,11 @@
+<div class="layout-container">
+  <app-topbar></app-topbar>
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer mode="side" opened *ngIf="authService.user | async">
+      <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content class="drawer-content">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

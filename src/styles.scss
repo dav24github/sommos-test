@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+a {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+// Layout
+.flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-space {
+  justify-content: space-between;
+}
+.gap-0 {
+  gap: 0.5rem;
+}
+.gap-1 {
+  gap: 1rem;
+}
+.gap-2 {
+  gap: 2rem;
+}
+.gap-3 {
+  gap: 3rem;
+}
+.gap-4 {
+  gap: 4rem;
+}
+
+$primary-palette: mat.define-palette(mat.$blue-palette);
+$accent-palette: mat.define-palette(mat.$pink-palette);
+$grey-palette: mat.define-palette(mat.$grey-palette);

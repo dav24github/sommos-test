@@ -1,0 +1,19 @@
+<div class="flex flex-column gap-0">
+  <h2>Available food</h2>
+  <div class="flex flex-column gap-1">
+    <app-food-item
+      [admin]="true"
+      *ngFor="let item of foods"
+      [title]="item.name!"
+    >
+      <ng-container detail>
+        <span class="price">${{ item.price }}</span>
+      </ng-container>
+      <ng-container buttons>
+        <button mat-icon-button (click)="editFoodVisibility(item, false)">
+          <mat-icon><span> visibility </span></mat-icon>
+        </button>
+      </ng-container>
+    </app-food-item>
+  </div>
+</div>

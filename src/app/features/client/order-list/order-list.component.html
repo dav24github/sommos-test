@@ -1,0 +1,23 @@
+<div class="flex flex-column gap-0">
+  <h2>Your order</h2>
+  <div class="flex flex-column gap-1">
+    <app-food-item *ngFor="let item of orderfoods" [title]="item.food.name!">
+      <ng-container detail>
+        <p class="price">
+          <span>{{ item.quantity }} Units</span>
+          <span> | </span>
+          <span>${{ item.food.price }}</span>
+        </p>
+      </ng-container>
+      <ng-container buttons>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openDialog(item.food)"
+        >
+          Ver
+        </button>
+      </ng-container>
+    </app-food-item>
+  </div>
+</div>

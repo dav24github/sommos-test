@@ -1,0 +1,24 @@
+<div class="flex flex-column gap-0">
+  <h2>Select your pizza</h2>
+  <div class="flex flex-column gap-1">
+    <app-food-item *ngFor="let item of foods" [title]="item.food.name!">
+      <ng-container detail>
+        <span class="price">${{ item.food.price }}</span>
+      </ng-container>
+      <ng-container buttons>
+        <button
+          [disabled]="item.quantity < 1 ? true : false"
+          mat-raised-button
+          color="warn"
+          (click)="removeOrder(item.food)"
+        >
+          -1
+        </button>
+        <span>{{ item.quantity }}</span>
+        <button mat-raised-button color="primary" (click)="addOrder(item.food)">
+          +1
+        </button>
+      </ng-container>
+    </app-food-item>
+  </div>
+</div>

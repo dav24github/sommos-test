@@ -1,0 +1,33 @@
+<div *ngFor="let order of orderfoods" class="cart-item flex flex-column gap-0">
+  <h2>
+    <strong>{{ order.food.name }}</strong>
+  </h2>
+  <h3>
+    <strong> Unit price: ${{ order.food.price }}</strong>
+  </h3>
+  <h3>
+    <strong> Cant: {{ order.quantity }}</strong>
+  </h3>
+  <h3>
+    <strong> Subtotal: ${{ order.food.price! * order.quantity! }}</strong>
+  </h3>
+
+  <div class="flex gap-1 flex-wrap">
+    <div *ngFor="let item of order.items" class="container">
+      <app-food-item [title]="order.food.name!">
+        <ng-container detail>
+          <span class="price">${{ order.food.price }}</span>
+        </ng-container>
+        <ng-container buttons>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="removeOrder(order.food)"
+          >
+            Remove
+          </button>
+        </ng-container>
+      </app-food-item>
+    </div>
+  </div>
+</div>
